@@ -34,7 +34,7 @@ def multiplicative_inverse(a, b):
 
     >>> multiplicative_inverse(7, 40)
     23
-    """    
+    """
     a, b = max(a, b), min(a, b)
     return gcdp(a, b)[-1] % a
 
@@ -45,7 +45,7 @@ def gcdp(a, b):
         return (a, 0, 1)
     d, x, y = gcdp(b, a % b)
     return (d, y, x - y * (a // b))
-    
+
 
 def generate_keypair(p, q):
     if not (is_prime(p) and is_prime(q)):
@@ -56,7 +56,7 @@ def generate_keypair(p, q):
     n = p * q
 
     phi = (p - 1) * (q - 1)
-    
+
     # Choose an integer e such that e and phi(n) are coprime
     e = random.randrange(1, phi)
 
