@@ -2,15 +2,12 @@ import random
 
 
 def is_prime(n):
-    b = True
     for i in range(2, int(n ** 0.5) + 1):
         if n % i == 0:
-            b = False
-            break
+            return False
     if n == 1:
         return False
-    else:
-        return b
+    return True
 
 
 def gcd(a, b):
@@ -35,12 +32,12 @@ def multiplicative_inverse(a, b):
     >>> multiplicative_inverse(7, 40)
     23
     """
-    a, b = max(a, b), min(a, b)
+    a, b = (a, b) if a > b else (b, a)
     return gcdp(a, b)[-1] % a
 
 
 def gcdp(a, b):
-    a, b = max(a, b), min(a, b)
+    a, b = (a, b) if a > b else (b, a)
     if b == 1:
         return (a, 0, 1)
     d, x, y = gcdp(b, a % b)
